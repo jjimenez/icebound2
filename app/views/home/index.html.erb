@@ -1,4 +1,36 @@
 <h3>Home</h3>
-<% @users.each do |user| %>
-  <p>User: <%=link_to user.name, user %></p>
-<% end %>
+<div class="span11 well">
+  <h4>Current</h4>
+</div>
+<div class="span11 well container-fluid">
+  <h4>Manuscripts</h4>
+
+  <div class="row-fluid">
+    <div id="manuscriptCarousel" class="carousel slide">
+      <!-- Carousel items -->
+      <div class="carousel-inner">
+        <% first = 'active ' %>
+        <% Manuscript.all.in_groups_of(3) do |group| %>
+            <div class="<%= first %>item">
+              <% group.each do |manuscript| %>
+                  <div class="itemCell span2">
+                    <%= manuscript.title if manuscript %>
+                  </div>
+              <% end %>
+            </div>
+            <% first = '' %>
+        <% end %>
+
+      </div>
+      <!-- Carousel nav -->
+      <a class="carousel-control left" href="#manuscriptCarousel" data-slide="prev">&lsaquo;</a>
+      <a class="carousel-control right" href="#manuscriptCarousel" data-slide="next">&rsaquo;</a>
+    </div>
+  </div>
+</div>
+<div class="span11 well">
+  <h4>Markets</h4>
+</div>
+<div class="span11 well">
+  <h4>Submissions</h4>
+</div>
