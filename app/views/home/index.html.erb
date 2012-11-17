@@ -4,18 +4,19 @@
 </div>
 <div class="span11 well container-fluid">
   <h4>Manuscripts</h4>
-
   <div class="row-fluid">
-    <div id="manuscriptCarousel" class="carousel slide">
+    <div id="manuscriptCarousel" class="carousel slide" data-interval='false'>
       <!-- Carousel items -->
       <div class="carousel-inner">
         <% first = 'active ' %>
-        <% Manuscript.all.in_groups_of(3) do |group| %>
+        <% @grouped_manuscripts.each do |group| %>
             <div class="<%= first %>item">
               <% group.each do |manuscript| %>
-                  <div class="itemCell span2">
-                    <%= manuscript.title if manuscript %>
-                  </div>
+                  <% if manuscript %>
+                      <div class="itemCell span2 has_popover" data-html="true" title='<%= manuscript.title %>' data-trigger='hover' data-placement='right' data-content="<p>Type: <%= manuscript.manuscript_type.name %></p><p>Word Count: <%= manuscript.word_count %></p>">
+                        <%= manuscript.title if manuscript %>
+                      </div>
+                  <% end %>
               <% end %>
             </div>
             <% first = '' %>
@@ -30,6 +31,31 @@
 </div>
 <div class="span11 well">
   <h4>Markets</h4>
+
+  <div class="row-fluid">
+    <div id="marketCarousel" class="carousel slide" data-interval='false'>
+      <!-- Carousel items -->
+      <div class="carousel-inner">
+        <% first = 'active ' %>
+        <% @grouped_markets.each do |group| %>
+            <div class="<%= first %>item">
+              <% group.each do |market| %>
+                  <% if market %>
+                      <div class="itemCell span2 has_popover" data-html="true" title='<%= market.name %>' data-trigger='hover' data-content="<p>Type: <%= market.market_type.name %></p><p>Email: <%= market.email %><p>website: <%= "<a href='#{market.website}' target='_new'>#{market.website}</a>" %></p>">
+                        <%= market.name if market %>
+                      </div>
+                  <% end %>
+              <% end %>
+            </div>
+            <% first = '' %>
+        <% end %>
+
+      </div>
+      <!-- Carousel nav -->
+      <a class="carousel-control left" href="#marketCarousel" data-slide="prev">&lsaquo;</a>
+      <a class="carousel-control right" href="#marketCarousel" data-slide="next">&rsaquo;</a>
+    </div>
+  </div>
 </div>
 <div class="span11 well">
   <h4>Submissions</h4>

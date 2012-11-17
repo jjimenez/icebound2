@@ -11,12 +11,13 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121116213845) do
+ActiveRecord::Schema.define(:version => 20121117170446) do
 
   create_table "manuscript_types", :force => true do |t|
     t.string   "name"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.integer  "user_id"
   end
 
   create_table "manuscripts", :force => true do |t|
@@ -25,12 +26,14 @@ ActiveRecord::Schema.define(:version => 20121116213845) do
     t.string   "word_count"
     t.datetime "created_at",         :null => false
     t.datetime "updated_at",         :null => false
+    t.integer  "user_id"
   end
 
   create_table "market_types", :force => true do |t|
     t.string   "name"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.integer  "user_id"
   end
 
   create_table "markets", :force => true do |t|
@@ -40,6 +43,7 @@ ActiveRecord::Schema.define(:version => 20121116213845) do
     t.integer  "market_type_id"
     t.datetime "created_at",     :null => false
     t.datetime "updated_at",     :null => false
+    t.integer  "user_id"
   end
 
   create_table "roles", :force => true do |t|
