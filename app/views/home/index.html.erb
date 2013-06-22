@@ -4,28 +4,17 @@
 </div>
 <div class="span11 well container-fluid">
   <h4>Manuscripts</h4>
-  <div class="row-fluid">
-    <div id="manuscriptCarousel" class="carousel slide" data-interval='false'>
-      <!-- Carousel items -->
-      <div class="carousel-inner">
-        <% first = 'active ' %>
-        <% @grouped_manuscripts.each do |group| %>
-            <div class="<%= first %>item">
-              <% group.each do |manuscript| %>
-                  <% if manuscript %>
-                      <div class="itemCell span2 has_popover" data-html="true" title='<%= manuscript.title %>' data-trigger='hover' data-placement='right' data-content="<p>Type: <%= manuscript.manuscript_type.name %></p><p>Word Count: <%= manuscript.word_count %></p>">
-                        <%= manuscript.title if manuscript %>
-                      </div>
-                  <% end %>
-              <% end %>
-            </div>
-            <% first = '' %>
-        <% end %>
 
+
+  <div class="row-fluid">
+    <div id="manuscriptCarousel">
+      <div id="manuscript_paginator">
+        <%= paginate @manuscripts, :remote => true  %>
       </div>
-      <!-- Carousel nav -->
-      <a class="carousel-control left" href="#manuscriptCarousel" data-slide="prev">&lsaquo;</a>
-      <a class="carousel-control right" href="#manuscriptCarousel" data-slide="next">&rsaquo;</a>
+      <div id="manuscripts" class="row-fluid">
+        <p> something is here.</p>
+         <%= render @manuscripts%>
+      </div>
     </div>
   </div>
 </div>

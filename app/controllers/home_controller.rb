@@ -11,7 +11,7 @@ class HomeController < ApplicationController
 
   def index
     @grouped_markets = Market.where(["user_id =?", current_user ]).in_groups_of(carousel_group_count)
-    @grouped_manuscripts = Manuscript.where(["user_id =?", current_user ]).in_groups_of(carousel_group_count)
+    @manuscripts = Manuscript.where(["user_id =?", current_user ]).page(params[:page] || 1)
   end
 
   def auth_failure

@@ -56,6 +56,6 @@ Icebound2::Application.configure do
   config.omniauth_provider_key = 'it is a secret.apps.googleusercontent.com'
   config.omniauth_provider_secret = 'thesecret'
 
-  ENV['SSL_CERT_FILE'] = 'C:\Ruby\RailsInstaller\cacert.pem'
+  ENV['SSL_CERT_FILE'] = '/usr/local/rvm/rubies/ruby-1.9.3-p392/lib/ruby/1.9.1/rubygems/ssl_certs/ca-bundle.pem'
 
 end
